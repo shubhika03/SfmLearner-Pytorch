@@ -128,8 +128,7 @@ def compute_errors(gt, pred, crop=True):
 
 
 def top_view_loss(mask, true_top_view):
-    if type(mask) not in [tuple, list]:
-        mask = [mask]
-    loss += nn.functional.binary_cross_entropy(mask_scaled, true_top_view)
+    
+    loss += nn.functional.binary_cross_entropy(mask, true_top_view)
     
     return loss    
