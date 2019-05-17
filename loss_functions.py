@@ -125,3 +125,11 @@ def compute_errors(gt, pred, crop=True):
         sq_rel += torch.mean(((valid_gt - valid_pred)**2) / valid_gt)
 
     return [metric.item() / batch_size for metric in [abs_diff, abs_rel, sq_rel, a1, a2, a3]]
+
+
+def top_view_loss(mask, true_top_view):
+    if type(mask) not in [tuple, list]:
+        mask = [mask]
+    loss += nn.functional.binary_cross_entropy(mask_scaled, true_top_view)
+    
+    return loss    
